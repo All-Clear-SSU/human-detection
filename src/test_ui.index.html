@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>YOLO ONNX WebUI</title>
+	</head>
+	<body>
+		<h2>Upload Image for Detection</h2>
+		<input type="file" id="fileInput">
+		<button onclick="upload()">Predict</button>
+		<div id="result"></div>
+		<img id="predictedImage" style="max-width:500px;margin-top:10px;"/>
+
+		<script>
+async function upload() {
+	const fileInput = document.getElementById('fileInput');
+	if(fileInput.files.length === 0) { alert("Select an image!"); return; }
+
+	const formData = new FormData();
+	formData.append("file", fileInput.files[0]);
+
+	const response = await fetch("http://localhost:8000/predict", {
+		method: "POST",
+		body: formData
+	});
+
+	const result = await response.json();
+	document.getElementById("result").innerText = JSON.stringify(result, null, 2);
+
+	// Display predicted image (if saved locally)
+	document.getElementById("predictedImage").src = result.image_path;
+}
+</script>
+	</body>
+</html>
+
