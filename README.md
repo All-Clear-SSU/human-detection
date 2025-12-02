@@ -1,6 +1,4 @@
-# Architecture
-
-![architecture](./architecture.png)
+# Human Detection
 
 ## Start Service
 
@@ -197,7 +195,11 @@ Pose model scores: [    0.30319     0.56544    0.060098    0.071273]
 ![](./output_with_pose.jpg)
 
 
-
 ## Predictions
 
 예측한 결과가"./predictions" 폴더에 저장됩니다.
+
+## Comparison With Other Models
+
+재난 특화
+
