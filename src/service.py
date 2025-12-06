@@ -12,7 +12,7 @@ from .yolo_pose_model import YOLOPoseOnnx
 
 # ----------------- CONFIG -----------------
 MODEL_PATH = "./model/best_human.onnx"
-COCO_MODEL_PATH = "./model/yolo11n.onnx"
+COCO_MODEL_PATH = "./model/yolo11x.onnx"
 # GENERALIST_MODEL_PATH = "yolo
 CLASS_NAMES = ["fire", "human", "smoke"]
 
