@@ -17,17 +17,23 @@ bash run_model_test_server.sh
 nohup uvicorn src.service:app --host 0.0.0.0 --port 8383 > server.log 2>&1 &
 ```
 
-## File Structure
+## Download Models That Are Missing
 
-⏱️ **Benchmark Result (1000 runs)**
+사람 인식 모델을 수정하기 위해서는
 
-| Metric             | Value     |
-| ------------------ | --------- |
-| Avg Inference Time | 26.61 ms  | 
-| Estimated FPS      | 37.58 FPS |
-| Avg CPU Usage      | 99.895 %  |
-| Avg RAM Usage      | 154.31 MB |
+```sh
+src/service.py -> COCO_MODEL_PATH # 변수를 수정하세요
+# ----------------- CONFIG -----------------
+MODEL_PATH = "./model/best_human.onnx"
+COCO_MODEL_PATH = "./model/yolo11x.onnx"
+# GENERALIST_MODEL_PATH = "yolo
+CLASS_NAMES = ["fire", "human", "smoke"]
+```
 
+
+```sh
+bash download_models.sh
+```
 
 ## Model Detail
 
@@ -71,9 +77,7 @@ Returns
     "fire_count": 1,
     "human_count": 1,
     "smoke_count": 1,
-    "total_objects": 3
-  }
-}
+    "total_objects": 3 } }
 ```
 
 ## predic_image
@@ -217,11 +221,20 @@ Pose model scores: [    0.30319     0.56544    0.060098    0.071273]
 
 ## Hybrid Model Benchmark
 
-- yolo11x
+```sh
+AMD Ryzen 7 8845HS w/ Radeon 780M Graphics
+CPU max MHz:             5137.0000
+CPU min MHz:             400.0000
+```
+
+
+> Run 100
+
+- ourmodel
 ```sh
 📊 Benchmark Result
-• Avg Processing Time : 597.26 ms
-• Estimated FPS       : 1.67 FPS
+• Estimated FPS       : 37.58 FPS
+
 ```
 
 - yolo11n
@@ -229,4 +242,28 @@ Pose model scores: [    0.30319     0.56544    0.060098    0.071273]
 📊 Benchmark Result
 • Avg Processing Time : 108.66 ms
 • Estimated FPS       : 9.20 FPS
+```
+
+
+- yolo11s
+
+```sh
+📊 Benchmark Result
+• Avg Processing Time : 127.29 ms
+• Estimated FPS       : 7.86 FPS
+```
+
+- yolo11m
+
+```sh
+📊 Benchmark Result
+• Avg Processing Time : 269.79 ms
+• Estimated FPS       : 3.71 FPS
+```
+
+- yolo11x
+```sh
+📊 Benchmark Result
+• Avg Processing Time : 597.26 ms
+• Estimated FPS       : 1.67 FPS
 ```

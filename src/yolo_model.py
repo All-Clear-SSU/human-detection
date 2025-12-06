@@ -200,7 +200,7 @@ class YOLOOnnx:
 # if __name__ == "__main__":
 #     # 테스트용 메인
 #     MODEL_PATH = "./model/best_human.onnx"
-#     COCO_MODEL_PATH = "./model/yolo11n.onnx"
+#     COCO_MODEL_PATH = "./model/yolo11m.onnx"
 #     TEST_FILE = "./human_cctv.png"
 #     class_names = ["fire", "human", "smoke"]                    # Custom 모델 클래스 이름
 #
@@ -210,4 +210,4 @@ class YOLOOnnx:
 #     print("Detections:", result["detections"])
 #     print("Summary:", result["summary"])
 #     yolo_onnx.benchmark(TEST_FILE, runs=100)
-#
+
