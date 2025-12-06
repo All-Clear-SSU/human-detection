@@ -3,3 +3,5 @@
 /src/__pycache__
 /videos
 /predictions
+/old_model
+/server.log

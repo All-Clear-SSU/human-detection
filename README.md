@@ -203,3 +203,30 @@ Pose model scores: [    0.30319     0.56544    0.060098    0.071273]
 
 재난 특화
 
+
+## Other Models with My Model Comparison
+
+
+| Model       | Class | Images | Instances | P     | R     | mAP50 | mAP50-95 |
+|-------------|--------|---------|-----------|--------|--------|--------|-----------|
+| YOLO11x     | human  | 2160    | 6144      | 0.569 | 0.475 | 0.425 | 0.208     |
+| YOLO11n     | human  | 2160    | 6144      | 0.479 | 0.369 | 0.309 | 0.132     |
+| YOLO11s     | human  | 2160    | 6144      | 0.530 | 0.403 | 0.349 | 0.158     |
+| **Our Model** | **human** | **2160** | **6144** | **0.925** | **0.876** | **0.937** | **0.641** |
+
+
+## Hybrid Model Benchmark
+
+- yolo11x
+```sh
+📊 Benchmark Result
+• Avg Processing Time : 597.26 ms
+• Estimated FPS       : 1.67 FPS
+```
+
+- yolo11n
+```sh
+📊 Benchmark Result
+• Avg Processing Time : 108.66 ms
+• Estimated FPS       : 9.20 FPS
+```

@@ -8,7 +8,12 @@ os.makedirs(SAVE_DIR, exist_ok=True)
 
 def process_video(video_file: str):
     video_path = os.path.join(VIDEO_DIR, video_file)
+    out_path = os.path.join(SAVE_DIR, f"pose_{video_file}")
     print("the path exists: " + os.path.exists(video_path).__str__())
+    
+    if out_path and os.path.exists(out_path): 
+        print(f"Output for {video_file} already exists. Skipping processing.")
+        return
     cap = cv2.VideoCapture(video_path)
     print("the video is opened: " + cap.isOpened().__str__())
 
@@ -17,7 +22,6 @@ def process_video(video_file: str):
     fps = cap.get(cv2.CAP_PROP_FPS) or 30
     width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
     height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
-    out_path = os.path.join(SAVE_DIR, f"pose_{video_file}")
     out = cv2.VideoWriter(out_path, fourcc, fps, (width, height))
 
     print(f"Processing {video_file}...")
@@ -60,7 +64,7 @@ def process_all_videos():
         process_video(video_file)
 
 # 실행
-# process_all_videos()
-process_video("fire_human_network_server_h264.mp4")
+process_all_videos()
+# process_video("fire_human_network_server_h264.mp4")
 print("All videos processed.")
 

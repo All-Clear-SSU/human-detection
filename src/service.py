@@ -12,6 +12,8 @@ from .yolo_pose_model import YOLOPoseOnnx
 
 # ----------------- CONFIG -----------------
 MODEL_PATH = "./model/best_human.onnx"
+COCO_MODEL_PATH = "./model/yolo11n.onnx"
+# GENERALIST_MODEL_PATH = "yolo
 CLASS_NAMES = ["fire", "human", "smoke"]
 
 # --- POSE MODEL CONFIG ---
@@ -23,7 +25,7 @@ os.makedirs(SAVE_DIR, exist_ok=True)
 
 # ----------------- INIT -----------------
 # 1. 기본 객체 탐지 모델 (fire, human, smoke)
-yolo = YOLOOnnx(MODEL_PATH, CLASS_NAMES)
+yolo = YOLOOnnx(MODEL_PATH, COCO_MODEL_PATH, CLASS_NAMES)
 
 # 2. 자세 분류 모델 (Standing, Sitting, Fall)
 # YOLOPoseOnnx 클래스를 사용하여 초기화합니다.
